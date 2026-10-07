@@ -1,6 +1,39 @@
 html{
     scroll-behaviour: smooth;
 }
+header{
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+.typing{
+    line-height:1.2;
+    margin:0 auto;
+    padding:0;
+    font-family:'courier new',courier,monospace;
+    color: rgb(255, 0, 0);
+    font-size: 24px;
+    width: 33ch;
+    overflow:hidden;
+    white-space:nowrap;
+    border-right: 3px solid rgb(255, 0, 0);
+    animation: type 3s steps(28),blink 0.7s step-end infinite;
+}
+@keyframes type{
+    from{
+        width:0;
+    }
+}
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
+::-webkit-scrollbar{width:12px;}
+::-webkit-scrollbar-track{background: rgb(0, 0, 0);}
+::-webkit-scrollbar-thumb{background:rgb(71, 29, 255);border-radius:6px;}
 
 body{
     background-image:url("https://wallpapercave.com/wp/wp13196799.jpg");
@@ -18,16 +51,18 @@ h1{
     color:royalblue;
     font-family:'Courier New', Courier, monospace;
     font-size: 60px;
-    margin:20px 0 10px;
+    margin:20px 0 0;
+    padding:0;
 }
+
 h1 mark{
     background-color: rgb(255,200,105);
-    padding:0px 15px;
+    padding:0 10;
     border-radius: 10px;
 }
 
 nav {
-    background-color:rgba(40,0,60,0.75);
+    background-color:rgba(216, 76, 16, 0.73);
     padding:15px;
     display: flex;
     justify-content: center;
@@ -49,7 +84,7 @@ nav a {
     transition:background-color 0.2s;
 }
 nav a:hover{
-    background-color: purple;
+    background-color: rgb(244, 122, 0);
     color:white;
 }
 
