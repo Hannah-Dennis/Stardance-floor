@@ -35,7 +35,7 @@ header{
 ::-webkit-scrollbar-track{background: rgb(0, 0, 0);}
 ::-webkit-scrollbar-thumb{background:rgb(71, 29, 255);border-radius:6px;}
 
-/*content part*/
+
 
 body{
     min-height: 100vh;
@@ -43,26 +43,39 @@ body{
     color: white;
     font-family:cursive;
 }
-body::before{
-    content:"";
-    position:fixed;
-    top:0;
-    width:100%;
-    height:130vh;
+body{
     background-image:url("https://wallpapercave.com/wp/wp13196799.jpg");
-    background-size:cover;
-    background-position:center;
+    background-size:auto 130%;
+    background-attachment:fixed;
     background-repeat:no-repeat;
-    z-index:-1;
+    min-height:100vh;
+    margin:0;
+    color:white;
+    font-family:cursive;
+    animation:parallax linear;
+    animation-timeline:scroll();
+    
 }
+
+@keyframes parallax{
+    from{background-position:center top;}
+    to  {background-position: center bottom;}}
+
 
 h1{
     color:royalblue;
     font-family:'Courier New', Courier, monospace;
     font-size: 60px;
-    margin:20px 0 0;
+    margin:20px 0 30px;
     padding:0;
+    position:relative;
+    animation:float linear;
+    animation-timeline: view();
 }
+@keyframes float{
+    from{top:0px;}
+    to  {top:70px;}}
+
 
 h1 mark{
     background-color: rgb(255,200,105);
@@ -105,6 +118,13 @@ section{
     border-radius:16px;
     box-shadow:0 8px 25px rgba(0,0,0,0.5);
     scroll-margin-top:100px;
+    animation: slide-up linear;
+    animation-timeline: view();
+    animation-range:0% 40%;
+}
+@keyframes slide-up{
+    from{transform:translate(0px,100px);}
+    to  {transform:translate(0px,0px);}
 }
 h2{
     color:rgb(225,200,105);
@@ -152,13 +172,4 @@ footer{
     margin-top: 40px;
 }
 
-/*parallax part */
 
-@keyframes bg-drift{
-    from{transform:translateY(0);}
-    to  {transform:translateY(-30vh);}
-}
-@keyframes header-sink{
-    from{transform:translateY(0);opacity:1;}
-    to  {transform:translateY(80px);opacity: 0.4;}
-}
