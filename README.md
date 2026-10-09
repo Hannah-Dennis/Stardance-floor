@@ -1,9 +1,8 @@
-# Stardance-floor 
-# Don't take it personally... actually, do.💃
+# My Personal Website
+A live website that's all about me, my hobbies, projects and more!
+<img width="1470" height="840" alt="Screenshot 2026-10-09 at 22 40 10" src="https://github.com/user-attachments/assets/4f81ab32-5e68-4d02-bc77-de34653c8cf9" />
 
-My personal website, built for Hack Club Stardance 2026.
-
---> Live site, link coming soon
+--> Live site, link: https://hannah-dennis.github.io/Stardance-floor/
 
 ## --> What's on it
     - About Me – who I am and what I'm into.
