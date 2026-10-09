@@ -35,16 +35,25 @@ header{
 ::-webkit-scrollbar-track{background: rgb(0, 0, 0);}
 ::-webkit-scrollbar-thumb{background:rgb(71, 29, 255);border-radius:6px;}
 
+/*content part*/
+
 body{
+    min-height: 100vh;
+    margin:0;
+    color: white;
+    font-family:cursive;
+}
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    width:100%;
+    height:130vh;
     background-image:url("https://wallpapercave.com/wp/wp13196799.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-    background-attachment:fixed;
-    min-height:100vh;
-    margin:0;
-    color:white;
-    font-family:cursive;
+    z-index:-1;
 }
 
 h1{
@@ -141,4 +150,15 @@ footer{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     margin-top: 40px;
+}
+
+/*parallax part */
+
+@keyframes bg-drift{
+    from{transform:translateY(0);}
+    to  {transform:translateY(-30vh);}
+}
+@keyframes header-sink{
+    from{transform:translateY(0);opacity:1;}
+    to  {transform:translateY(80px);opacity: 0.4;}
 }
