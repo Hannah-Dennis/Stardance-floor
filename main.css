@@ -36,22 +36,44 @@ header{
 ::-webkit-scrollbar-thumb{background:rgb(71, 29, 255);border-radius:6px;}
 
 
+*{cursor:none;}
+#cursor{
+    position:fixed;
+    margin-left:-15px;
+    margin-top:-15px;
+    font-size:30px;
+    color:rgb(225,200,105);
+    pointer-events:none;
+    z-index:9999;
+    animation:twinkle 1.2s ease-in-out infinite;
+}
+@keyframes twinkle{
+    0%,100%{
+        transform:scale(1);
+        text-shadow:0 0 5px white;
+    }
+    50%{
+        transform: scale(1.25);
+        text-shadow:0 0 15px white,0 0 30px rgb(225,200,105);
+    }
+}
 
 body{
     min-height: 100vh;
     margin:0;
     color: white;
-    font-family:cursive;
+    font-family:'Fredoka',sans-serif;
 }
 body{
-    background-image:url("https://wallpapercave.com/wp/wp13196799.jpg");
-    background-size:auto 130%;
+    background-image:url("https://img.magnific.com/free-photo/anime-night-sky-illustration_23-2151684322.jpg?semt=ais_hybrid&w=740&q=80");
+    background-size:130% auto;
+    
     background-attachment:fixed;
     background-repeat:no-repeat;
     min-height:100vh;
     margin:0;
     color:white;
-    font-family:cursive;
+    font-family:'Fredoka',sans-serif;
     animation:parallax linear;
     animation-timeline:scroll();
     
@@ -62,9 +84,23 @@ body{
     to  {background-position: center bottom;}}
 
 
+.banner{
+    background: linear-gradient(90deg,#ffb3d9,#c7a6ff,#9fd8ff,#a8f0d4,#FFE564);
+    color:black;
+    padding:8px;
+    font-family:'courier New', Courier,monospace;
+    font-weight:bold;
+}
+.banner mark{
+    background: linear-gradient(90deg,#ffb3d9,#c7a6ff,#9fd8ff,#a8f0d4,#FFE564);
+    -webkit-background-clip: text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:none;
+}
 h1{
     color:royalblue;
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Fredoka',sans-serif;
     font-size: 60px;
     margin:20px 0 30px;
     padding:0;
@@ -78,44 +114,49 @@ h1{
 
 
 h1 mark{
-    background-color: rgb(255,200,105);
-    padding:0 10;
-    border-radius: 10px;
+    background: linear-gradient(90deg, #ffb3d9,#c7a6ff,#9fd8ff,#a8f0d4,#FFE564);
+    -webkit-background-clip: text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:none;
 }
 
 nav {
-    background-color:rgba(216, 76, 16, 0.73);
+    background-color:rgba(13,11,36,0.6);
+    border:1px solid rgba(199,166,255,0.3);
+    box-shadow: 0 0 25px rgba(199,166,255,0.25);
     padding:15px;
-    display: flex;
-    justify-content: center;
+    display:flex;
+    justify-content:center;
     gap:30px;
-    border-radius:12px;
+    border-radius: 24px;
     margin:10px 20px;
     position: sticky;
-    top: 10px;
+    top:10px;
     z-index:10;
 }
 nav a {
-    color: rgb(225,200,105);
-    font-family:'Courier New', Courier, monospace;
+    color: #fff4dc;
+    font-family:'Fredoka',sans-serif;
     font-size:24px;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration:none;
     padding:8px 16px;
-    border-radius:8px;
+    border-radius:20px;
     transition:background-color 0.2s;
 }
 nav a:hover{
-    background-color: rgb(244, 122, 0);
-    color:white;
+    background:linear-gradient(90deg,#ffb3d9,#c7a6ff,#9fd8ff);
+    color:#0d0b24;
 }
 
 section{
-    background-color:rgba(0,0,0,0.6);
+    background-color:rgba(13,11,36,0.8);
+    border:1px solid rgba(199,166,255,0.3);
+    box-shadow:0 0 25px rgba(199,166,255,0.3);
     max-width:900px;
     margin:40px auto;
     padding:30px 40px;
-    border-radius:16px;
     box-shadow:0 8px 25px rgba(0,0,0,0.5);
     scroll-margin-top:100px;
     animation: slide-up linear;
@@ -127,11 +168,12 @@ section{
     to  {transform:translate(0px,0px);}
 }
 h2{
-    color:rgb(225,200,105);
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Fredoka',sans-serif;
     font: size 40px;
     margin-top:0;
-    border-bottom:2px solid rgb(225,200,105);
+    border-bottom:3px solid;
+    border-image: linear-gradient(90deg, #ffb3d9,#c7a6ff,#9fd8ff,transparent) 1;
+    color:#fff4dc;
     padding-bottom:10px;
 }
 h3{
