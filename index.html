@@ -11,22 +11,98 @@
 
 <header><p class="typing">Now you've made it personal . . .   </p></header>
 
-<div id="cursor">⭐️</div>
+<div id="cursor">✧</div>
+
+<div id="lightbox"><img id="lightbox-img" alt=""></div>
+
+<div class="progress"></div>
+
+
+<div class="star-game"></div>
+<button id="theme-btn"> ☀️ / 🌙 </button>
+
+<p><span id="star" class="floaty">⭐️</span>clicked <span id="count"> 0 </span> times</p>
+</div>
+<body>
+
 <script>
     const cursor =document.getElementById("cursor");
     document.addEventListener("mousemove",(e)=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";});
+
+document.getElementById("theme-btn").addEventListener("click",()=>{
+    document.body.classList.toggle("day");
+});
+
+
+let count=0;
+document.getElementById("star").addEventListener("click",()=>{
+    count++;
+    document.getElementById("count").textContent=count;
+});
+
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightbox-img");
+document.querySelectorAll(".card").forEach((card)=>{
+    card.addEventListener("click",()=>{
+        lightboxImg.src=card.querySelector(".art").src;
+        lightbox.classList.add("open");
+    });
+});
+lightbox.addEventListener("click",()=>{
+    lightbox.classList.remove("open");
+});
+
+const gallery =document.getElementById("gallery");
+if (gallery){
+
+const gallery=document.getElementById("gallery");
+gallery.addEventListener("mousemove",(e)=>{
+    const box=gallery.getBoundingClientRect();
+    const x=(e.clientX - box.left)/box.width - 0.5;
+    const y=(e.clientY - box.top)/box.height - 0.5;
+    gallery.style.setProperty("--mx",x);
+    gallery.style.setProperty("--my",y);
+});
+gallery.addEventListener("mouseleave",()=>{
+    gallery.style.setProperty("--mx",0);
+    gallery.style.setProperty("--my",0);
+});
+}
+
+document.addEventListener("click",(e)=>{
+    for(let i=0;i<6;i++){
+        const s = document.createElement("span");
+        s.className="burst";
+        s.textContent="✨";
+        s.style.left=e.clientX+"px";
+        s.style.top=e.clientY+"px";
+        s.style.setProperty("--dx",(Math.random() *200 - 100) + "px");
+        s.style.setProperty("--dy",(Math.random() *200 - 100) + "px")
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(),600);
+    }
+});
+
+
+
 </script>
 
-<body>
+
+<div class="shooting-star"></div>
+<div class="shooting-star" style="top:30%;animation-delay:3s;"></div>
+<div class="shooting-star" style="top:60%;animation-delay:6s"></div>
+
+<span class="floaty">🥐</span>
+
     <header>
 <h1>
     <marquee scrollamount = "30" direction = "left" behavior = "alternate">
         <mark>My Personal Website</mark></marquee></h1>
 
 <nav>
-    <a href="index.html">About</a>
+    <a href="index.html" class="active">About</a>
     <a href="projects.html">Projects</a>
-    <a href="#entertainment">Entertainment</a>
+    <a href="entertainment.html">Entertainment</a>
 </nav>
 </header>
 <section id="about">
@@ -42,19 +118,6 @@
 </ul>
 </section>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <p>Right now, I am working on a Starbie for Half-Life(week 1). My idea for the look is inspired by an episode of the show The Amazing World of Gumball (video attached) where the Starbie is in the shape of a console called <i>GAME CHILD</i>(knock-off of GAME BOY)</p>
-    <img src="StarbieDraftPlan.jpg"alt="Starbie Plan (for week 1)" width="500" height="540">
-    <p><a href="https://www.youtube.com/embed/u7JuNHFBRnM?si=xeoNb9q-H4W1TxR8" target="_blank">Click here to see my inspiration</a></p>
-</section>
-
-<section id="entertainment">
-    <h2>Entertainment</h2>
-    <p>Bored? Check out <a href="https://neal.fun" target="_blank">this site</a> (IT'S SUPER FUN)</p>
-    <p>Here are some <a href="https://www.arealme.com" target="_blank">Fun Quizzes</a>!</p>
-    <p>For all the Potterheads out there: <a href="https://www.youtube.com/embed/FPrdvJ9ts4w?si=kvIaHGB82zMGBKN-" target="_blank">Potter Parodies.</a></p>
-   </section>
 
 <footer>Hi! I'm Hannah, I'm 15 years old and I am the author of this webpage.</footer>
 
