@@ -267,6 +267,72 @@ nav a:hover{
     color:#0d0b24;
 }
 
+
+.card::before,
+.card::after{
+    content:"";
+    position:absolute;
+    width:40px;
+    height:40px;
+    border-color:#a8f0d4;
+    border-style: solid;
+    opacity:0;
+    pointer-events:none;
+    transition:all 0.3s ease-out;
+}
+.card::before{
+    top:-30px;
+    left:-30px;
+    border-width:3px 0 0 3px;
+}
+.card::after{
+    bottom:-30px;
+    right:-30px;
+    border-width:0 3px 3px 0;
+}
+.card:hover::before{
+    top:-10px;
+    right:-10px;
+    opacity:1;
+}
+.card:hover::after{
+    bottom:10px;
+    right:10px;
+    opacity:1;
+}
+
+section{postion:relative;}
+section:not(#gallery-section)::after{
+content:"";
+    position:absolute;
+    inset:0px;
+    border-radius:inherit;
+    background:radial-gradient(circle 200px at var(--x) var(--y), rgba(159,216,255,0.18),transparent);
+    opacity:0;
+    pointer-events:none;
+    transition: opacity 0.3s;
+}
+section:not(#gallery-section):hover::after{opacity:1;}
+
+nav{position:sticky;}
+nav::after{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border:2px solid #fff4dc;
+    border-radius:28px;
+    filter:url(#wobble);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.2s
+}
+nav:hover::after{
+    opacity:1;
+}
+
+
+
+
 section{
     background-color:rgba(13,11,36,0.8);
     border:1px solid rgba(199,166,255,0.3);

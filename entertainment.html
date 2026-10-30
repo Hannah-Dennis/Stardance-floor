@@ -1,101 +1,86 @@
 <!DOCTYPE html>
 <head><title>Entertainment | My Personal Website</title>
+    <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<title>Entertainment | My Personal Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="main.css">
 </head>
 
-<div id="cursor">✧</div>
-<div id="lightbox"><img id="lightbox-img" alt=""></div>
-
-<div class="progress"></div>
-
-
-<div class="star-game"></div>
-<button id="theme-btn"> ☀️ / 🌙 </button>
-
-<p><span id="star" class="floaty">⭐️</span>clicked <span id="count"> 0 </span> times</p>
-</div>
 
 <body>
-<header><p class="typing" style="width: 64ch;animation:type 3s steps(64),blink 0.05s step-end infinite;">My wallet and I have a very close relationship...it's purse-onal</p></header>
+<svg width="0"height="0" style="position:absolute;">
+    <filter id="wobble">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="1">
+            <animate attributeName="seed" values="1;2;3;4" dur="0.4s" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="6"/>
+    </filter>
+</svg>
 
-<script>
-    const cursor=document.getElementById("cursor");
-    document.addEventListener("mousemove",(e)=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";})
+<div id="cursor">✧</div>
+<div class="progress"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star" style="top:30%;animation-delay:3s;"></div>
+<div class="shooting-star" style="top:60%;animation-delay:6s;"></div>
 
-document.getElementById("theme-btn").addEventListener("click",()=>{
-    document.body.classList.toggle("day");
-});
+<header>
+    <h1><marquee scrollamount="30 behaviour="alternate"><mark>My Personal Website</mark></marquee></h1>
+<p class="typing">My wallet and I have a very close relationship...it's purse-onal</p>
 
-
-let count=0;
-document.getElementById("star").addEventListener("click",()=>{
-    count++;
-    document.getElementById("count").textContent=count;
-});
-
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
-document.querySelectorAll(".card").forEach((card)=>{
-    card.addEventListener("click",()=>{
-        lightboxImg.src=card.querySelector(".art").src;
-        lightbox.classList.add("open");
-    });
-});
-lightbox.addEventListener("click",()=>{
-    lightbox.classList.remove("open");
-});
-
-const gallery =document.getElementById("gallery");
-if (gallery){
-
-const gallery=document.getElementById("gallery");
-gallery.addEventListener("mousemove",(e)=>{
-    const box=gallery.getBoundingClientRect();
-    const x=(e.clientX - box.left)/box.width - 0.5;
-    const y=(e.clientY - box.top)/box.height - 0.5;
-    gallery.style.setProperty("--mx",x);
-    gallery.style.setProperty("--my",y);
-});
-gallery.addEventListener("mouseleave",()=>{
-    gallery.style.setProperty("--mx",0);
-    gallery.style.setProperty("--my",0);
-});
-}
-
-document.addEventListener("click",(e)=>{
-    for(let i=0;i<6;i++){
-        const s = document.createElement("span");
-        s.className="burst";
-        s.textContent="✨";
-        s.style.left=e.clientX+"px";
-        s.style.top=e.clientY+"px";
-        s.style.setProperty("--dx",(Math.random() *200 - 100) + "px");
-        s.style.setProperty("--dy",(Math.random() *200 - 100) + "px")
-        document.body.appendChild(s);
-        setTimeout(()=>s.remove(),600);
-    }
-});
-
-
-
-</script>
-
-
-    <header>
+</header>
         <nav>
-            <a href="index.html">Home</a>
+            <a href="index.html">About</a>
             <a href="projects.html">Projects</a>
             <a href="entertainment.html" class="active">Entertainment</a>
+            <button id="theme-btn" cass="theme-btn" title="Light mode/Dark mode">🔅/🌙</button>
         </nav>
-    </header>
+    
+<main>
 
-<section>
-     <h2>Entertainment</h2>
-    <p>Bored? Check out <a href="https://neal.fun" target="_blank">this site</a> (IT'S SUPER FUN)</p>
-    <p>Here are some <a href="https://www.arealme.com" target="_blank">Fun Quizzes</a>!</p>
-    <p>For all the Potterheads out there: <a href="https://www.youtube.com/embed/FPrdvJ9ts4w?si=kvIaHGB82zMGBKN-" target="_blank">Potter Parodies.</a></p>
-   </section>
-   
+    <section id="bored">
+        <h2>Bored?</h2>
+        <p>Can't decide? Let the website pick for you (click the die)</p>
+        <button id="random-site" class="big-btn">🎲</button>
+    </section>
+    
+<section id="websites">
+    <h2>Fun Websites</h2>
+    <div class="link-grid">
+        <a class="link-card" href="https://neal.fun"target="_blank">
+            <span class="emoji">👑</span>
+            <h3>neal.fun</h3>
+            <p> creative games and other activities. IT'S SUPER FUN!!</p>
+        </a>
+
+        <a class="link-card" href="https://quickdraw.withgoogle.com"target="_blank">
+<span class="emoji">✎</span>
+<h3>Quick, Draw!</h3>
+<p>doodle something and see if the AI can guess it</p></a>
+
+<a class="link-card"href="https://www.boredbutton.com" target="_blank">
+    <span class="emoji">🔘</span>
+    <h3>Bored Button</h3>
+    <p>click the button to visit interesting sites</p>
+</a>
+
+
+    </div>
+</section>
+
+<section id="quizzes">
+    <h2>Quizzes</h2>
+    <div class="link-grid">
+        <a class="link-card" href="https://www.arealme.com" target="_blank">
+            <span class="emoji">💭</span>
+            <h3>Arealme</h3>
+            <p>personality quizzes, ability tests, and much more</p>
+        </a>
+    </div>
+</section>
+
+   </main>
+<script src="script.js"></script>
+
 </body>
+</html>

@@ -1,99 +1,45 @@
 <!DOCTYPE html>
 <html><head>
-    <title>Projects | My Personal Website</title>
+    <meta charset="UTC-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <title>Projects | My Personal Website</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
-<div id="cursor">✧</div>
-<div id="lightbox"><img id="lightbox-img" alt=""></div>
 
-<div class="progress"></div>
-
-
-<div class="star-game"></div>
-<button id="theme-btn"> ☀️ / 🌙 </button>
-
-<p><span id="star" class="floaty">⭐️</span>clicked <span id="count"> 0 </span> times</p>
-</div>
 <body>
 
+<svg width="0" height="0"style="position:absolute;">
+    <filter id="wobble">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="1">
+            <animate attributeName="seed"values="1;2;3;4"dur="0.4s" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic"scale="6"/>
+    </filter>
+</svg>
 
-
-<script>
-    const cursor=document.getElementById("cursor");
-    document.addEventListener("mousemove",(e)=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";})
-
-document.getElementById("theme-btn").addEventListener("click",()=>{
-    document.body.classList.toggle("day");
-});
-
-
-let count=0;
-document.getElementById("star").addEventListener("click",()=>{
-    count++;
-    document.getElementById("count").textContent=count;
-});
-
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
-document.querySelectorAll(".card").forEach((card)=>{
-    card.addEventListener("click",()=>{
-        lightboxImg.src=card.querySelector(".art").src;
-        lightbox.classList.add("open");
-    });
-});
-lightbox.addEventListener("click",()=>{
-    lightbox.classList.remove("open");
-});
-
-const gallery =document.getElementById("gallery");
-if (gallery){
-
-const gallery=document.getElementById("gallery");
-gallery.addEventListener("mousemove",(e)=>{
-    const box=gallery.getBoundingClientRect();
-    const x=(e.clientX - box.left)/box.width - 0.5;
-    const y=(e.clientY - box.top)/box.height - 0.5;
-    gallery.style.setProperty("--mx",x);
-    gallery.style.setProperty("--my",y);
-});
-gallery.addEventListener("mouseleave",()=>{
-    gallery.style.setProperty("--mx",0);
-    gallery.style.setProperty("--my",0);
-});
-}
-
-document.addEventListener("click",(e)=>{
-    for(let i=0;i<6;i++){
-        const s = document.createElement("span");
-        s.className="burst";
-        s.textContent="✨";
-        s.style.left=e.clientX+"px";
-        s.style.top=e.clientY+"px";
-        s.style.setProperty("--dx",(Math.random() *200 - 100) + "px");
-        s.style.setProperty("--dy",(Math.random() *200 - 100) + "px")
-        document.body.appendChild(s);
-        setTimeout(()=>s.remove(),600);
-    }
-});
-
-
-
-</script>
-
-
-    <header><p class="typing" style="width:39ch;animation:type 3s steps(39),blink 0.7s step-end infinite;">Don't take it personally...actually,do</p></header>
-    
-
+<div id="cursor">✧</div>
+<div class="progress"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star" style="top:30%;animation-delay:3s;"></div>
+<div class="shooting-star" style="top:60%;animation-delay:6s;"></div>
+<div id="lightbox"><img id="lightbox-img" alt=""></div>
 
 <header>
+
+
+    <h1><marquee scrollamount="30" behaviour="alternate"><mark>My Personal Website</mark></marquee></h1>
+    <p class="typing">Don't take it personally...actually, do</p>
+</header>
 <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html">About</a>
     <a href="projects.html" class="active">Projects</a>
     <a href="entertainment.html">Entertainment</a>
+    <button id="theme-btn" class="theme-btn"title="Light mode/Dark mode">🔅/🌙</button>
 </nav>
-</header>
+
+<main>
 
 <section id="gallery-section">
 
@@ -103,23 +49,27 @@ document.addEventListener("click",(e)=>{
         <img class="art" src="StarbieDraftPlan.jpg"alt="Starbie Plan">
         <div class="label">
             <h3>Starbie</h3>
-            <p>HalfLife . week 1</p>
+            <p>HalfLife - week 1</p>
         </div>
     </div>
+
 <div class="card" style="--depth:10">
     <img class="art" src="doodle1.jpg" alt="Doodle">
     <div class="label">
         <h3>Schematic</h3>
-    </div>
-</div>
-<div class="card wide" style="--depth:21">
-    <img class="art" src="doodle2.jpg" alt="Doodle">
-    <div class="label">
-        <h3>PCB Design</h3>
+        <p>HalfLife</p>
     </div>
 </div>
 
+<div class="card wide" style="--depth:21">
+    <img class="art" src="doodle2.jpg" alt="GAME CHILD PCB Design">
+    <div class="label">
+        <h3>PCB Design</h3>
+        <p>HalfLife</p>
+    </div>
 </div>
+
+
 
 </section>
 
@@ -127,28 +77,12 @@ document.addEventListener("click",(e)=>{
 <section>
     <h2>Projecs</h2>
     <p>These are my projects...</p>
-    <p>Right now, I am working on a Starbie for HalfLife (week 1). My idea for the look is inspired by an episode, called "The Console", of the show The Amazing World of Gumball</p>
+    <p>Right now, I am working on my HalfLife projects. My idea for the look of the Starbie(week 1) is inspired by an episode, called "The Console", of the show The Amazing World of Gumball</p>
     <img src="StarbieDraftPlan.jpg" alt="Starbie Plan (for week 1)">
     <p><a href="https://www.youtube.com/watch?v=u7JuNHFBRnM" target="_blank">My inspiration</a></p>
 </section>
 
-<script>
-    const cursor=document.getElementById("cursor");
-    document.addEventListener("mousemove",(e)=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";})
-
-const gallery=document.getElementById("gallery");
-gallery.addEventListener("mousemove",(e)=>{
-    const box=gallery.getBoundingClientRect();
-    const x=(e.clientX - box.left)/box.width - 0.5;
-    const y=(e.clientY - box.top)/box.height - 0.5;
-    gallery.style.setProperty("--mx",x);
-    gallery.style.setProperty("--my",y);
-});
-gallery.addEventListener("mouseleave",()=>{
-    gallery.style.setProperty("--mx",0);
-    gallery.style.setProperty("--my",0);
-});
-</script>
+<script src="script.js"></script>
 </body>
 
 </html>

@@ -3,123 +3,79 @@
 <head><title>  My Personal Website  </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="main.css">
-    <link href ="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap"rel="stylesheet">
+    <link href ="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap"rel="stylesheet">
 
 </head>
-
-<div class="banner"><marquee scrollamount = "20" direction = "left" behaviour = "alternate"><mark>new: Projects tab has been updated!</mark></marquee></div>
-
-<header><p class="typing">Now you've made it personal . . .   </p></header>
-
-<div id="cursor">✧</div>
-
-<div id="lightbox"><img id="lightbox-img" alt=""></div>
-
-<div class="progress"></div>
-
-
-<div class="star-game"></div>
-<button id="theme-btn"> ☀️ / 🌙 </button>
-
-<p><span id="star" class="floaty">⭐️</span>clicked <span id="count"> 0 </span> times</p>
-</div>
 <body>
 
-<script>
-    const cursor =document.getElementById("cursor");
-    document.addEventListener("mousemove",(e)=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";});
+<svg width="0" height="0"style="position:absolute;">
+    <filter id="wobble">
+        <feTurbulence type="fractalNoise"baseFrequency="0.02" numOctaves="2"seed="1">
+            <animate atrributeName="seed" values="1;2;3;4"dur="0.4s"repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scal="6"/>
+    </filter>
+</svg>
 
-document.getElementById("theme-btn").addEventListener("click",()=>{
-    document.body.classList.toggle("day");
-});
-
-
-let count=0;
-document.getElementById("star").addEventListener("click",()=>{
-    count++;
-    document.getElementById("count").textContent=count;
-});
-
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
-document.querySelectorAll(".card").forEach((card)=>{
-    card.addEventListener("click",()=>{
-        lightboxImg.src=card.querySelector(".art").src;
-        lightbox.classList.add("open");
-    });
-});
-lightbox.addEventListener("click",()=>{
-    lightbox.classList.remove("open");
-});
-
-const gallery =document.getElementById("gallery");
-if (gallery){
-
-const gallery=document.getElementById("gallery");
-gallery.addEventListener("mousemove",(e)=>{
-    const box=gallery.getBoundingClientRect();
-    const x=(e.clientX - box.left)/box.width - 0.5;
-    const y=(e.clientY - box.top)/box.height - 0.5;
-    gallery.style.setProperty("--mx",x);
-    gallery.style.setProperty("--my",y);
-});
-gallery.addEventListener("mouseleave",()=>{
-    gallery.style.setProperty("--mx",0);
-    gallery.style.setProperty("--my",0);
-});
-}
-
-document.addEventListener("click",(e)=>{
-    for(let i=0;i<6;i++){
-        const s = document.createElement("span");
-        s.className="burst";
-        s.textContent="✨";
-        s.style.left=e.clientX+"px";
-        s.style.top=e.clientY+"px";
-        s.style.setProperty("--dx",(Math.random() *200 - 100) + "px");
-        s.style.setProperty("--dy",(Math.random() *200 - 100) + "px")
-        document.body.appendChild(s);
-        setTimeout(()=>s.remove(),600);
-    }
-});
-
-
-
-</script>
-
+<div id="cursor">✧</div>
+<div class="progress"></div>
 
 <div class="shooting-star"></div>
 <div class="shooting-star" style="top:30%;animation-delay:3s;"></div>
-<div class="shooting-star" style="top:60%;animation-delay:6s"></div>
+<div class="shooting-star" style="top:60%;animation-delay:6s;"></div>
+<div class="banner">
+<marquee scrollamount="10"behaviour="alternate"><mark><b>NEW:</b> the Projects tab has beeen updated!</mark></marquee>
+</div>
 
-<span class="floaty">🥐</span>
-
-    <header>
+<header>
 <h1>
     <marquee scrollamount = "30" direction = "left" behavior = "alternate">
         <mark>My Personal Website</mark></marquee></h1>
-
+        <p class="typing">Now you've made it personal...</p>
+</header>
 <nav>
     <a href="index.html" class="active">About</a>
     <a href="projects.html">Projects</a>
     <a href="entertainment.html">Entertainment</a>
+    
+    <button id="theme-btn"class="theme-btn"title="Light mode/Dark mode">🔅/🌙</button>
 </nav>
-</header>
+<main>
 <section id="about">
 <h2>About Me</h2>
 <p>Hi there! My name is Hannah, I'm 15 years old and I am passionate about coding and creating new things. My main interest is Ethical Hacking though I still have a lot to learn.</p>
 
+<h3>My hobbies</h3>
+<div class="pills">
+<span> Doodling characters</span>
+<span> Reading (mystery and fantasy mainly)</span>
+<span> Coding Python</span>
+<span> ORIGAMIII (but miniature, im exploring tessellations rn)</span>
+</div>
 
-<p>My hobbies</p>
-<ul>
-    <li>Doodling</li>
-    <li>Reading</li>
-    <li>Coding</li>
-</ul>
 </section>
 
+<section id="fun-corner">
+    <h2>Fun Corner</h2>
+    <div class="fun-row">
+        <div class="fun-item">
+            <span id="star" class="floaty">⭐️</span>
+            <p>clicked <span id="count">0</span>times</p>
+        </div>
+        
+        <div class="fun-item">
+            <span id="croissant" class="floaty">🥐</span>
+            <p id="croissant-msg">Click the croissant</p>
+        </div>
+    </div>
+</section>
+</main>
 
 <footer>Hi! I'm Hannah, I'm 15 years old and I am the author of this webpage.</footer>
+
+
+<script src="script.js"></script>
+
 
 </body>
 </html>
