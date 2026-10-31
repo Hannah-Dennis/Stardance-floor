@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head><title>  My Personal Website  </title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="main.css">
-    <link href ="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap"rel="stylesheet">
+    <link href ="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Gaegu:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap"rel="stylesheet">
+
 
 </head>
+
 <body>
 
-<svg width="0" height="0"style="position:absolute;">
+<svg width="0" height="0"style="position:absolute;" aria-hidden="true">
     <filter id="wobble">
         <feTurbulence type="fractalNoise"baseFrequency="0.02" numOctaves="2"seed="1">
-            <animate atrributeName="seed" values="1;2;3;4"dur="0.4s"repeatCount="indefinite"/>
+            <animate attributeName="seed" values="1;2;3;4"dur="0.4s"repeatCount="indefinite"/>
         </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" scal="6"/>
+        <feDisplacementMap in="SourceGraphic" scale="6"/>
     </filter>
 </svg>
 
@@ -23,16 +26,13 @@
 <div class="shooting-star"></div>
 <div class="shooting-star" style="top:30%;animation-delay:3s;"></div>
 <div class="shooting-star" style="top:60%;animation-delay:6s;"></div>
+
+
+
 <div class="banner">
-<marquee scrollamount="10"behaviour="alternate"><mark><b>NEW:</b> the Projects tab has beeen updated!</mark></marquee>
+<marquee scrollamount="8"> ✮ new ✮ the Projects tab has been updated!</marquee>
 </div>
 
-<header>
-<h1>
-    <marquee scrollamount = "30" direction = "left" behavior = "alternate">
-        <mark>My Personal Website</mark></marquee></h1>
-        <p class="typing">Now you've made it personal...</p>
-</header>
 <nav>
     <a href="index.html" class="active">About</a>
     <a href="projects.html">Projects</a>
@@ -40,22 +40,39 @@
     
     <button id="theme-btn"class="theme-btn"title="Light mode/Dark mode">🔅/🌙</button>
 </nav>
+
+
+<header class="hero-runway">
+    <div class="hero-stage">
+        <p class="hero-kicker">★ welcome to my ★</p>
+        <h1 class="hero-word">Personal Website</h1>
+        <div class="hero-sub">
+            <p class="typing">Now you've made it personal . . .</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+    </div>
+</header>
+
 <main>
-<section id="about">
+<section id="about" style="--h:330;">
+    <p class="kicker">// 01 whoami</p>
 <h2>About Me</h2>
 <p>Hi there! My name is Hannah, I'm 15 years old and I am passionate about coding and creating new things. My main interest is Ethical Hacking though I still have a lot to learn.</p>
 
 <h3>My hobbies</h3>
 <div class="pills">
-<span> Doodling characters</span>
-<span> Reading (mystery and fantasy mainly)</span>
-<span> Coding Python</span>
-<span> ORIGAMIII (but miniature, im exploring tessellations rn)</span>
+<span class="chip"> Doodling characters</span>
+<span class="chip"> Reading (mystery and fantasy mainly)</span>
+<span class="chip"> Coding Python</span>
+<span class="chip"> ORIGAMIII (but miniature, im exploring tessellations rn)</span>
 </div>
 
+<p class="scribble">psst..hover near the edges of these boxes</p>
 </section>
 
-<section id="fun-corner">
+
+<section id="fun-corner" style="--h:85;">
+    <p class="kicker">//02 fun corner</p>
     <h2>Fun Corner</h2>
     <div class="fun-row">
         <div class="fun-item">
@@ -70,6 +87,13 @@
     </div>
 </section>
 </main>
+
+<div class="horizon" aria-hidden="true">
+    <div class="horizon-glow"></div>
+    <div class="horizon-line"></div>
+    <div class="horizon-floor"><div class="horizon-plane"></div>
+</div>
+</div>
 
 <footer>Hi! I'm Hannah, I'm 15 years old and I am the author of this webpage.</footer>
 

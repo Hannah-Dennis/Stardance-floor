@@ -21,6 +21,7 @@
     --h:330;
 }
 *{--neon:#ff8fd8;}
+
 @supports(color:oklch(50% 0.1 200)){
     *{--neon: oklch(82% 0.16 var(--h));}
 }
@@ -31,7 +32,7 @@
 }
 
 html{
-    scrol-behaviour:smooth;
+    scroll-behaviour:smooth;
     background-color:var(--night);
 }
 *,
@@ -51,7 +52,7 @@ body{
     line-height:1.7;
     background-color:var(--night);
     background-image:url("https://img.magnific.com/free-photo/anime-night-sky-illustration_23-2151684322.jpg?semt=ais_hybrid&w=740&q=80");
-    background-size:100% auto, 130% auto;
+    background-size:130% auto;
     background-attachment:fixed;
     background-repeat:no-repeat;
     animation:parallax linear;
@@ -61,8 +62,8 @@ body{
 }
 
 @keyframes parallax{
-    from{background-position:center top,center top;}
-    to{background-position:center top,center bottom;}
+    from{background-position:center top;}
+    to{background-position:center bottom;}
 }
 
 @view-transition{navigation:auto;}
@@ -137,7 +138,7 @@ h1 mark{padding:0 12px;}
     border-bottom:1px solid #222;
     color:var(--yellow);
     font-family:var(--term);
-    font: size 24px;
+    font-size: 24px;
     letter-spacing:0.08em;
     line-height:1.4;
     text-shadow:0 0 0.1em var(--yellow),0 0 0.5em rgba(255,229,100,0.45);
@@ -148,7 +149,7 @@ nav{
     position:sticky;
     top:10px;
     z-index:50;
-    width:calc(100%-40px);
+    width:calc(100% - 40px);
     max-width:980px;
     margin:14px auto;
     padding:8px 18px;
@@ -158,7 +159,7 @@ nav{
     align-items:center;
     gap:6px 30px;
     background-color:rgba(13,11,36,0.7);
-    border:1px solid var(--border);
+    border:1px solid rgba(199,166,255,0.35);
 }
 nav a{
     font-family:var(--term);
@@ -201,7 +202,7 @@ nav:hover::after{opacity:1;}
     letter-spacing:0.08em;
     background:transparent;
     color:var(--muted);
-    border:1px dahsed var(--muted);
+    border:1px dashed var(--muted);
     padding:0 10px;
 }
 .theme-btn:hover{
@@ -234,7 +235,7 @@ nav:hover::after{opacity:1;}
     text-transform:uppercase;
     color:var(--muted);
 }
-hero-word{
+.hero-word{
     margin:0;
     font-family:var(--display);
     font-weight:900;
@@ -281,7 +282,7 @@ hero-word{
 }
 
 .typing{
-    margin:auto;
+    margin:0 auto;
     font-family:var(--term);
     font-size:32px;
     line-height:1.3;
@@ -362,7 +363,7 @@ h3{
     margin:26px 0 8px;
 font-family:var(--display);
 font-weight:700;
-font-size:28;
+font-size:28px;
 line-height:1.1;
 letter-spacing:0.08em;
 text-transform:uppercase;
@@ -443,7 +444,7 @@ img{
 
 .horizon-plane{
     position:absolute;
-    left:50%;
+    left:-50%;
     right:-50%;
     top:0;
     height:300%;
@@ -458,7 +459,7 @@ img{
 }
 
 @keyframes floor-scroll{
-    from{transfrom:rotateX(72deg) translateY(0);}
+    from{transform:rotateX(72deg) translateY(0);}
     to{transform:rotateX(72deg) translateY(var(--cell));}
 }
 
@@ -475,6 +476,71 @@ footer{
 }
 
 
+.chip{
+    clip-path:var(--chip);
+
+}
+.pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+.pills span{
+    padding:2px 16px;
+    font-family:var(--term);
+    font-size:23px;
+    letter-spacing:0.04em;
+    background-color:var(--lilac);
+    color:var(--night);
+}
+
+.big-btn{
+    padding:14px 32px;
+    border:none;
+    font-family:var(--display);
+    font-weight:900;
+    font-size:30px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    background-color:var(--yellow);
+    color:var(--night);
+    transition: transform 0.2s;
+}
+
+.big-btn:hover{
+    transform:scale(1.05) rotate(-1deg);
+}
+.fun-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    gap:30px;
+    text-align:center;
+}
+.fun-item p{
+    margin:6px 0 0;
+    font-family: var(--hand);
+    font-size:26px;
+    line-height:1.2;
+}
+
+.floaty{
+    display:inline-block;
+    font-size:56px;
+    line-height:1;
+    animation:bob 3s ease-in-out infinite;
+}
+@keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+.floaty.spin{
+    animation:spin 0.6s ease-in-out;
+}
+@keyframes spin{
+    50%{transform:rotate(180deg) scale(1.4);}
+    100%{transform:rotate(360deg) scale(1);}
+}
 
 #gallery-section{
     max-width:1300px;
@@ -501,7 +567,7 @@ footer{
     background-color:#120f2b;
 
 }
-.card.art{
+.card .art{
     position:absolute;
     top: -8%;
     left:-8%;
@@ -513,7 +579,7 @@ footer{
     transform:translate(calc(var(--mx)*var(--depth)*1px),calc(var(--my)*var(--depth)*1px));
     transition:transform 0.1s ease-out;
 }
-.card.label{
+.card .label{
     position:relative;
     z-index:2;
     padding:4px 12px;
@@ -532,7 +598,7 @@ footer{
     color:var(--cream);
 }
 
-.card.label p {
+.card .label p {
     margin:0;
     font-family:var(--term);
     font-size:19px;
@@ -589,7 +655,7 @@ footer{
     position:absolute;
     top:0;
     left:50%;
-    width:140%;
+    width:140px;
     height:100%;
     transform:translateX(-50%);
     overflow:visible;
@@ -597,7 +663,7 @@ footer{
 }
 .route-line path{
     fill:none;
-    vector-effect:non-scale-stroke;
+    vector-effect:non-scaling-stroke;
 }
 .route-ghost{
     stroke:rgba(199,166,255,0.4);
@@ -619,13 +685,13 @@ footer{
 }
 
 @keyframes draw-route{
-    to{stroke-dashoff:0;}
+    to{stroke-dashoffset:0;}
 
 }
 .stop{
     position:relative;
     z-index:1;
-    width:calc(50%-90%);
+    width:calc(50% - 90px);
     padding:18px 20px;
     background-color:rgba(10,8,32,0.8);
 }
@@ -635,7 +701,7 @@ footer{
 .stop.soon{
     opacity:0.6;
 }
-.stop.when{
+.stop .when{
     margin:0;
     font-family:var(--term);
     font-size:22px;
@@ -694,7 +760,7 @@ section a.link-card{color:var(--cream);
     justify-content:center;
     align-items:center;
 }
-#light.open{
+#lightbox.open{
     display:flex;
 }
 #lightbox img{
@@ -705,18 +771,27 @@ section a.link-card{color:var(--cream);
 
 
 
-body.day nav{
+body.day{
+    --panel:rgba(255,248,240,0.92);
+    --rock-c:#cbbfe0;
+    --rock-hi:#e6ddf3;
+    --cream:#24183a;
+    --muted:#5b4d7a;
+    background-image:url("sunrise.jpg");
+
+}
+body.day nav{background-color:rgba(255,248,240,0.92);}
+
+body.day h2,
+body.day .hero-word{
+    color:#24183a;
+}
+
+body.day .stop,
+body.day .link-card,
+body.day .card .label{
     background-color:rgba(255,248,240,0.9);
 }
-
-body.day.stop,
-body.day .link-card,
-body.day.card.label{
-    background-color:rgba(255,248,240,0.4);
-}
-
-
-
 
 #cursor{
     position:fixed;
@@ -758,7 +833,7 @@ body.day.card.label{
 }
 @keyframes fly{
     to{
-        transform:translate(var(--dx),var(--dy)) sclae(0.3s);
+        transform:translate(var(--dx),var(--dy)) scale(0.3s);
         opacity:0;
     }
 }

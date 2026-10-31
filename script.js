@@ -21,9 +21,10 @@ function jaggedShape(w,h,rough,step){
 
     for(let x=0; x<w;x+=step) points.push([x,jag()]);
     for(let y = 0; y<h;y+=step) points.push([w - jag(),y]);
-    for(let x =w; x>0; y-=step) points.push([jag(),y]);
+    for(let y=h;y>0;y-=step) points.push([x,h -jag()]);
+    for (let y=h;y>0;y-=step) points.push([jag(),y]);
 
-return "polygon("+points.map((p)=>p[0].toFixed(1)+"px"+p[1].toFixed(1)+"px").join(", ")+")";
+return "polygon("+points.map((p)=>p[0].toFixed(1)+"px "+p[1].toFixed(1)+"px ").join(", ")+")";
 
 }
 function shapeRock(el){
@@ -35,7 +36,7 @@ if (el.matches("section")){
     el.style.setProperty("--rim", jaggedShape(w+28,h+28,14,18));
     el.style.setProperty("--chip",jaggedShape(w,h,5,26));
 }else{
-    el.style.setProperty("-chip",jaggedShape(w,h,4,20));
+    el.style.setProperty("--chip",jaggedShape(w,h,4,20));
 }
 
 }
@@ -55,6 +56,7 @@ document.querySelectorAll("section").forEach((box)=>{
 
     box.addEventListener("mouseleave",()=>{
         box.style.setProperty("--y","-9999px");
+        box.style.setProperty("--x","-9999px");
     });
 })
 
@@ -131,13 +133,13 @@ const croissantLines =[
 ];
 
 if (croissant && croissantMsg){
-    croissant.addEventListener("ciick",()=>{
+    croissant.addEventListener("click",()=>{
         croissant.classList.add("spin");
-        croisssantMsg.textContent = croissantLines[(Math.random()*croissant.length)];
+        croissantMsg.textContent = croissantLines[Math.floor(Math.random()* croissantLines.length)]
 
     });
 
-    croissant.addEventListener("animationend", ()=>{
+    croissant.addEventListener("animationend", ()=>{ /* chec k this apajiwdniwndiw niwqdwbeud9uew9*/
         croissant.classList.remove("spin");
     });
 }
@@ -145,3 +147,61 @@ if (croissant && croissantMsg){
 const lightbox=document.getElementById("lightbox");
 const lightboxImg=document.getElementById("lightbox-img");
 
+if(lightbox && lightboxImg){
+    document.querySelectorAll(".card").forEach((card)=>{
+        const art = card.querySelector(".art");
+        if (!art) return;
+card.addEventListener("click",()=>{
+    lightboxImg.src=art.src;
+    lightbox.classList.add("open");
+})
+        
+    })
+
+    lightbox.addEventListener("click",()=>{
+        lightbox.classList.remove("open");
+    })
+}
+
+const gallery = document.getElementById("gallery");
+
+if (gallery){
+    let x=0
+    let y=0
+    let waiting=false;
+
+    gallery.addEventListener("mousemove",(e)=>{
+        const box = gallery.getBoundingClientRect();
+        x = (e.clientX - box.left)/box.width - 0.5;
+        y=(e.clientY - box.top)/box.height-0.5;
+
+
+if (!waiting){
+    waiting=true;
+    requestAnimationFrame(()=>{
+        gallery.style.setProperty("--mx",x);
+        gallery.style.setProperty("--my",y);
+        waiting=false;
+    })
+}
+
+    });
+
+gallery.addEventListener("mouseleave",()=>{
+    gallery.style.setProperty("--mx",0)
+    gallery.style.setProperty("--my",0)
+})
+
+}
+
+
+const randomBtn=document.getElementById("random-site")
+
+if(randomBtn){
+    randomBtn.addEventListener("click",()=>{
+        const links=document.querySelectorAll("a.link-card")
+            const pick = links[Math.floor(Math.random()*links.length)];
+            window.open(pick.href,"_blank");
+        
+    })
+}
