@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Projects | My Personal Website</title>
     
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Gaegu:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -79,6 +81,7 @@
         <p>HalfLife</p>
     </div>
 </div>
+<p class="scribble">↑ ↑ ↓ ↓ ← → ← → a b </p>
 
 </div>
 
@@ -98,6 +101,11 @@
 <svg class="route-line" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true">
 <path class="route-ghost" d="M50 0 C 95 120, 5 230, 50 3 50 S 95 580, 50 700 S 5 900,50 1000"/>
 <path class="route-draw" pathLength="1" d="M50 0 C 95 120, 5 230, 50 350 S 95 580, 50 700 S 5 900, 50 1000"/>
+
+<filter id="rock" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
 
 </svg>
 
