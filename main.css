@@ -977,3 +977,56 @@ body.day .card .label{
     }
 }
 
+.tess-triangles {
+  background:
+    conic-gradient(from 45deg, var(--lilac) 0 25%, transparent 0 50%, var(--pink) 0 75%, transparent 0)
+    0 0 / 48px 48px,
+    #1a1636;
+}
+.tess-pinwheel {
+  background:
+    repeating-conic-gradient(var(--lilac) 0 12.5%, var(--sky) 0 25%)
+    0 0 / 48px 48px;
+}
+
+.tess-checker {
+  background:
+    conic-gradient(var(--pink) 0 25%, #1a1636 0 50%, var(--pink) 0 75%, #1a1636 0)
+    0 0 / 48px 48px;
+}
+
+.tess-zigzag {
+  background:
+    linear-gradient(135deg, var(--mint) 25%, transparent 25%) -24px 0 / 48px 48px,
+    linear-gradient(225deg, var(--mint) 25%, transparent 25%) -24px 0 / 48px 48px,
+    linear-gradient(315deg, var(--mint) 25%, transparent 25%) 0 0 / 48px 48px,
+    linear-gradient(45deg, var(--mint) 25%, transparent 25%) 0 0 / 48px 48px,
+    #1a1636;
+}
+
+
+.tess-box {
+  height: 260px;
+  transition: filter 0.4s;
+}
+
+.tess-box:hover {
+  filter: hue-rotate(40deg) brightness(1.1);
+}
+
+
+.tess-box.folding {
+  animation: fold 0.4s ease-in-out;
+}
+
+@keyframes fold {
+  50% { transform: perspective(600px) rotateY(90deg); }
+}
+
+
+.tess-strip {
+  max-width: 920px;
+  height: 36px;
+  margin: 0 auto;
+  opacity: 0.4;
+}

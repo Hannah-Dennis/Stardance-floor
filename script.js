@@ -340,3 +340,31 @@ document.addEventListener("keydown",(e)=>{
         konamiStep=0;
     }
 });
+
+
+const tessBox = document.getElementById("tess-box");
+const tessName = document.getElementById("tess-name");
+const patterns = [
+  ["tess-triangles", "triangles"],
+  ["tess-pinwheel", "pinwheel"],
+  ["tess-checker", "checkerboard"],
+  ["tess-zigzag", "zigzag"]
+];
+let tessIndex = 0;
+
+if (tessBox && tessName) {
+  tessBox.addEventListener("click", () => {
+    tessBox.classList.add("folding");
+
+ setTimeout(() => {
+      tessBox.classList.remove(patterns[tessIndex][0]);
+      tessIndex = (tessIndex + 1) % patterns.length;
+      tessBox.classList.add(patterns[tessIndex][0]);
+      tessName.textContent = "pattern: " + patterns[tessIndex][1];
+    }, 200);
+  });
+
+  tessBox.addEventListener("animationend", () => {
+    tessBox.classList.remove("folding");
+  });
+}
